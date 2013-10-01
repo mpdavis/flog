@@ -1,0 +1,5 @@
+SECRET_KEY = "S3CR3T"
+
+MONGODB_SETTINGS = {
+    'DB': 'blog',
+}
