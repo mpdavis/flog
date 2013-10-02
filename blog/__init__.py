@@ -18,8 +18,10 @@ db = MongoEngine(app)
 
 
 from admin.views import admin
+from pages.views import pages
 from posts.views import posts
 
 app.register_blueprint(admin)
+app.register_blueprint(pages)
 app.register_blueprint(posts)
 

@@ -2,7 +2,6 @@
 import os
 
 
-
 SECRET_KEY = "S3CR3T"
 
 MONGODB_DB = os.environ.get('MONGODB_DB', None)
@@ -12,6 +11,7 @@ MONGODB_USERNAME = os.environ.get('MONGODB_USERNAME', None)
 MONGODB_PASSWORD = os.environ.get('MONGODB_PASSWORD', None)
 
 ADMIN_EMAIL = 'mike.philip.davis@gmail.com'
+ADMIN_NAME = 'Michael Davis'
 
 
 try:
