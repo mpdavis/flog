@@ -23,5 +23,17 @@ class EditPostView(MethodView):
         return redirect(url_for('posts.detail', slug=post.slug))
 
 
+class AddPostView(MethodView):
+
+    def get(self):
+        return render_template("admin/new-post.html")
+
+    def post(self):
+        post = Post(title=request.form['post-title'], body=request.form['post-body'], slug=request.post['post-slug'])
+        post.save()
+        return redirect(url_for('posts.detail', slug=post.slug))
+
+
 # Register the urls
+admin.add_url_rule('/admin/blog/', view_func=AddPostView.as_view('add-post'))
 admin.add_url_rule('/admin/blog/<slug>/', view_func=EditPostView.as_view('edit-post'))

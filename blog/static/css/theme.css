@@ -1,3 +1,19 @@
+
+
+body {
+    margin-top: 100px; /* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
+    background-color: #efefef;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+
+/******************/
+/*     Navbar     */
+/******************/
+
 .navbar {
     background-color: #9b59b6;
     border-bottom-color: #8e44ad;
@@ -14,29 +30,4 @@
 
 .navbar-inverse .navbar-brand {
     color: #eeeeee;
-}
-
-.avatar {
-    text-align: center;
-}
-
-.jumbotron {
-    margin-top: 50px;
-}
-
-h2 .heading {
-    font-size: 45px;
-}
-
-body {
-    margin-top: 100px; /* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
-    background-color: #efefef;
-}
-
-.well {
-    background-color: white;
-}
-
-footer {
-    margin: 50px 0;
 }
