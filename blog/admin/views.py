@@ -26,10 +26,14 @@ class EditPostView(MethodView):
 class AddPostView(MethodView):
 
     def get(self):
-        return render_template("admin/new-post.html")
+        return render_template("admin/add-post.html")
 
     def post(self):
-        post = Post(title=request.form['post-title'], body=request.form['post-body'], slug=request.post['post-slug'])
+        post = Post(
+            title=request.form.get('post-title', None),
+            body=request.form.get('post-body', None),
+            slug=request.form.get('post-slug', None),
+        )
         post.save()
         return redirect(url_for('posts.detail', slug=post.slug))
 

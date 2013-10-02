@@ -6,28 +6,31 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <form role="form" method="POST">
-                    <input type="text" class="form-control" id="post-title" name="post-title" value="{{ post.title }}">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="post-title" name="post-title" placeholder="Title">
+                    </div>
+                    <input type="text" class="form-control" id="post-slug" name="post-slug" placeholder="Slug">
                     <hr>
-                    <textarea class="form-control" rows="6" id="post-body" name="post-body">{{ post.body }}</textarea>
+                    <textarea class="form-control" rows="6" id="post-body" name="post-body" placeholder="Add post body..."></textarea>
                     <br>
                     <input type="submit" class="btn btn-primary pull-right" value="Save">
                 </form>
             </div>
             <div class="panel-footer">
-                <span class="glyphicon glyphicon-time"></span> Posted at {{ post.created_at.strftime('%H:%M %Y-%m-%d') }} by Michael Davis
+                <span class="glyphicon glyphicon-time"></span> Posted at  by Michael Davis
             </div>
         </div>
 
 
         <div class="panel panel-default">
             <div class="panel-body">
-                <h1>{{ post.title }}</h1>
+                <h1></h1>
                 <hr>
 
-                <p>{{ post.body }}</p>
+                <p></p>
             </div>
             <div class="panel-footer">
-                <span class="glyphicon glyphicon-time"></span> Posted at {{ post.created_at.strftime('%H:%M %Y-%m-%d') }} by Michael Davis
+                <span class="glyphicon glyphicon-time"></span> Posted at  by Michael Davis
             </div>
         </div>
 
