@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for post in posts %}
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1>{{ post.title }}</h1>
+                <hr>
+                <p>{{ post.body|truncate(200)|safe }}</p>
+                <a class="btn btn-primary pull-right" href="{{ url_for('posts.detail', slug=post.slug) }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+            <div class="panel-footer">
+                <span class="glyphicon glyphicon-time"></span> Posted at {{ post.created_at.strftime('%H:%M %Y-%m-%d') }} by Michael Davis
+            </div>
+        </div>
+
+
+
+      <!--<h2><a href="{{ url_for('posts.detail', slug=post.slug) }}">{{ post.title }}</a></h2>-->
+      <!--<p>{{ post.body|truncate(100) }}</p>-->
+      <!--<p>-->
+        <!--{{ post.created_at.strftime('%H:%M %Y-%m-%d') }} |-->
+        <!--{% with total=post.comments|length %}-->
+            <!--{{ total }} comment {%- if total > 1 %}s{%- endif -%}-->
+        <!--{% endwith %}-->
+      <!--</p>-->
+    {% endfor %}
+{% endblock %}
