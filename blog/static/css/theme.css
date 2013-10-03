@@ -31,3 +31,31 @@ footer {
 .navbar-inverse .navbar-brand {
     color: #eeeeee;
 }
+
+
+/******************/
+/*     Contact    */
+/******************/
+
+.contact-row {
+    margin-left: 10px;
+}
+
+.contact-row .contact-text {
+    line-height: 32px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.contact a {
+    display: block;
+    cursor: pointer;
+    line-height: 32px;
+    height: 32px;
+    padding-left: 10px;
+    width: auto;
+    height: auto;
+    line-height: normal;
+    vertical-align: text-top;
+}
+

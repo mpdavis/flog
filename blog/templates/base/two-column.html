@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+
+        <div class="row">
+            <div class="col-lg-8">
+            {% block left_column %}{% endblock %}
+            </div>
+
+            <div class="col-lg-4">
+                {% include "widgets/about.html" %}
+                {% include "widgets/contact.html" %}
+                {% include "widgets/github.html" %}
+            </div>
+        </div>
+
+{% endblock %}
