@@ -1,6 +1,9 @@
 from flask import Flask
+from flask import redirect
+from flask import url_for
 from flask.ext.mongoengine import MongoEngine
 
+import templatetags
 import settings
 
 
@@ -16,6 +19,14 @@ app.config['MONGODB_PASSWORD'] = settings.MONGODB_PASSWORD
 
 db = MongoEngine(app)
 
+
+@app.before_request
+def check_app_state():
+    if not settings.SETUP_COMPLETE and not settings.SETUP_IN_PROGRESS:
+        settings.SETUP_IN_PROGRESS = True
+        return redirect(url_for('auth.setup'))
+
+templatetags.setup_jinja2_environment(app)
 
 from admin.views import admin
 from auth.views import auth

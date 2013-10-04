@@ -2,6 +2,9 @@
 import os
 
 
+SETUP_COMPLETE = False
+SETUP_IN_PROGRESS = False
+
 SECRET_KEY = "S3CR3T"
 
 MONGODB_DB = os.environ.get('MONGODB_DB', None)
