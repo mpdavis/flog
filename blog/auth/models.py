@@ -14,6 +14,18 @@ class User(db.Document):
     def check_password(self, password):
         return pbkdf2_sha512.decrypt(password, self.password)
 
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def get_id(self):
+        return self.username
+
+    def is_anonymous(self):
+        return False
+
     def __unicode__(self):
         return self.username
 
