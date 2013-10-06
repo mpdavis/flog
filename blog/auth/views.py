@@ -1,15 +1,19 @@
 import json
 
 from flask import Blueprint
-from flask import flash
+from flask import redirect
 from flask import render_template
 from flask import request
-from flask.views import MethodView
+from flask import url_for
+import flask_login
+from flask_login import login_required
 
+from blog.auth import UserAwareMethodView
+from blog.auth import setup_incomplete
 from blog.auth.forms import LoginForm
 from blog.auth.forms import SetupForm
 from blog.auth.models import User
-from blog.auth import UserAwareMethodView
+
 
 
 auth = Blueprint('auth', __name__, template_folder='templates')
@@ -22,38 +26,51 @@ class LoginView(UserAwareMethodView):
         return render_template('auth/login.html', form=form)
 
     def post(self):
-
         form = LoginForm(request.form)
-        logged_in = False
-        message = ''
 
         if form.validate():
-
             user = User.objects.get(username=form.username.data)
+            if user and user.check_password(form.password.data):
+                flask_login.login_user(user)
+                return redirect(url_for("admin.index"))
 
-            if user:
-                logged_in = user.check_password()
-                if not logged_in:
-                    message = "Incorrect username or password"
-            else:
-                message = "Incorrect username or password"
+        return redirect(url_for("auth.login"))
 
-        response = json.dumps(
-            {
-                'logged_in': logged_in,
-                'error_message': message,
-            })
 
-        return response
+class LogoutView(UserAwareMethodView):
+    decorators = [login_required]
+
+    def get(self):
+        flask_login.logout_user()
+        return redirect(url_for('posts.list'))
 
 
 class SetupView(UserAwareMethodView):
+    decorators = [setup_incomplete]
 
     def get(self):
         form = SetupForm()
         return render_template('auth/setup.html', form=form)
 
+    def post(self):
+        form = SetupForm(request.form)
+
+        if form.validate():
+
+            username = form.username.data
+            password = User.hash_password(form.password.data)
+
+
+            user = User(username=username, password=password)
+            user.save()
+            flask_login.login_user(user)
+
+            return redirect(url_for('admin.add-post'))
+
+        return redirect(url_for('admin.add-post'))
+
 
 # Register the urls
 auth.add_url_rule('/login/', view_func=LoginView.as_view('login'))
+auth.add_url_rule('/logout/', view_func=LogoutView.as_view('logout'))
 auth.add_url_rule('/setup/', view_func=SetupView.as_view('setup'))

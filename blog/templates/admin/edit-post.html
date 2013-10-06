@@ -7,7 +7,7 @@
                 <form role="form" method="POST">
                     <input type="text" class="form-control" id="post-title" name="post-title" value="{{ post.title }}">
                     <hr>
-                    <textarea class="form-control" rows="6" id="post-body" name="post-body">{{ post.body }}</textarea>
+                    <textarea class="form-control" rows="30" id="post-body" name="post-body">{{ post.body }}</textarea>
                     <br>
                     <input type="submit" class="btn btn-primary pull-right" value="Save">
                 </form>
@@ -17,16 +17,16 @@
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <h1>{{ post.title }}</h1>
-                <hr>
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-body">-->
+                <!--<h1>{{ post.title }}</h1>-->
+                <!--<hr>-->
 
-                <p>{{ post.body }}</p>
-            </div>
-            <div class="panel-footer">
-                <span class="glyphicon glyphicon-time"></span> Posted at {{ post.created_at.strftime('%H:%M %Y-%m-%d') }} by Michael Davis
-            </div>
-        </div>
+                <!--<p>{{ post.body }}</p>-->
+            <!--</div>-->
+            <!--<div class="panel-footer">-->
+                <!--<span class="glyphicon glyphicon-time"></span> Posted at {{ post.created_at.strftime('%H:%M %Y-%m-%d') }} by Michael Davis-->
+            <!--</div>-->
+        <!--</div>-->
 
 {% endblock %}

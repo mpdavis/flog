@@ -1,23 +1,28 @@
-from flask import Blueprint, render_template
-from flask.views import MethodView
+from flask import Blueprint
+from flask import render_template
 
+from blog.auth import UserAwareMethodView
 from blog.posts.models import Post
 
 posts = Blueprint('posts', __name__, template_folder='templates')
 
 
-class ListView(MethodView):
+class ListView(UserAwareMethodView):
+    active_nav = 'blog'
 
     def get(self):
-        posts = Post.objects.all()
-        return render_template('posts/list.html', posts=posts)
+        context = self.get_context()
+        context['posts'] = Post.objects.all()
+        return render_template('posts/list.html', **context)
 
 
-class DetailView(MethodView):
+class DetailView(UserAwareMethodView):
+    active_nav = 'blog'
 
     def get(self, slug):
-        post = Post.objects.get_or_404(slug=slug)
-        return render_template('posts/detail.html', post=post)
+        context = self.get_context()
+        context['post'] = Post.objects.get_or_404(slug=slug)
+        return render_template('posts/detail.html', **context)
 
 
 # Register the urls

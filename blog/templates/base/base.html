@@ -14,24 +14,23 @@
     </head>
 
     <body>
-        {% if not remove_navbar %}
-            {% include "base/navbar.html" %}
-        {% endif %}
+        <div id="wrap">
+            {% if not remove_navbar %}
+                {% include "base/navbar.html" %}
+            {% endif %}
 
-        <div class="container">
 
-            {% block content %}{% endblock %}
+            <div class="container content-container">
 
-            <hr>
+                {% block content %}{% endblock %}
 
-            <footer>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p>&copy; Michael Davis 2013 </p>
-                    </div>
-                </div>
-            </footer>
+            </div>
+        </div>
 
+        <div class="footer">
+            <div class="container">
+                <p class="text-muted credit">Copyright 2013 <a href="http://michael-p-davis.com">Michael Davis</a>.</p>
+            </div>
         </div>
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

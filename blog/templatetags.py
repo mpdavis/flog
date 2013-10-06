@@ -17,7 +17,7 @@ def render_field(context, field, form_name, label=None, single=False):
     error_class = 'error' if field.errors else ''
 
     label = """
-        <label for="%s">
+        <label for="%s" class="col-lg-2 control-label">
             %s
         </label>
     """ % (field.id, field.label.text)
@@ -27,7 +27,10 @@ def render_field(context, field, form_name, label=None, single=False):
     if field.type == 'PasswordField':
         input_class = 'password'
 
-    input = """<input type="%s" class="form-control" id="%s">""" % (input_class, field.id)
+    input = """<div class="col-lg-10">
+                   <input type="%s" class="form-control" id="%s" name="%s">
+               </div>
+            """ % (input_class, field.id, field.id)
 
     values = {
         'error_class':  error_class,

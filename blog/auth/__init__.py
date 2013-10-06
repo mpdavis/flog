@@ -1,12 +1,22 @@
+from functools import wraps
 
+from flask import abort
+from flask import redirect
 from flask import session
+from flask import url_for
 from flask.views import MethodView
 
 import flask_login
 
 from blog.auth.models import User
 
-from blog import settings
+
+def user_unauthorized_callback():
+    return redirect(url_for('auth.login'))
+
+
+def load_user(username):
+    return User.objects.get(username=username)
 
 
 class UserAwareMethodView(MethodView):
@@ -31,3 +41,13 @@ class UserAwareMethodView(MethodView):
             ctx.update(extra_ctx)
         ctx.update(kwargs)
         return ctx
+
+
+def setup_incomplete(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        users = User.objects.all()
+        if len(users):
+            abort(404)
+        return f(*args, **kwargs)
+    return decorated_function

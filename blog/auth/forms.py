@@ -6,10 +6,10 @@ from wtforms import validators
 
 
 class LoginForm(Form):
-    username = TextField('Username', [validators.Required(), validators.Email()])
+    username = TextField('Username', [validators.Required()])
     password = PasswordField('Password', [validators.Required()])
-    # remember_me = BooleanField('Remember')
 
 
 class SetupForm(Form):
-    text = PasswordField("Text")
+    username = TextField("Username")
+    password = PasswordField("Password")

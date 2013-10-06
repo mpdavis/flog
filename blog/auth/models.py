@@ -8,11 +8,12 @@ class User(db.Document):
     username = db.StringField(required=True)
     password = db.StringField(required=True)
 
-    def hash_password(self, password):
+    @classmethod
+    def hash_password(cls, password):
         return pbkdf2_sha512.encrypt(password)
 
     def check_password(self, password):
-        return pbkdf2_sha512.decrypt(password, self.password)
+        return pbkdf2_sha512.verify(password, self.password)
 
     def is_authenticated(self):
         return True

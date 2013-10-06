@@ -13,13 +13,18 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('posts.list') }}">Blog</a></li>
-                <li><a href="{{ url_for('pages.projects') }}">Projects</a></li>
-                <li><a href="{{ url_for('pages.resume' ) }}">Resume</a></li>
+                <li><a href="{{ url_for('posts.list') }}" {% if active_nav == "blog" %}class="active" {% endif %}>Blog</a></li>
+                <li><a href="{{ url_for('pages.projects') }}" {% if active_nav == "pages_projects" %}class="active" {% endif %}>Projects</a></li>
+                <li><a href="{{ url_for('pages.resume' ) }}" {% if active_nav == "pages_resume" %}class="active" {% endif %}>Resume</a></li>
 
             </ul>
             <ul class="nav navbar-nav pull-right">
-                <li><a href="{{ url_for('auth.login' ) }}">Login</a></li>
+                {% if user %}
+                    <li><a href="{{ url_for('admin.index' ) }}" {% if active_nav == "admin_index" %}class="active" {% endif %}>Admin</a></li>
+                    <li><a href="{{ url_for('auth.logout' ) }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('auth.login' ) }}">Login</a></li>
+                {% endif %}
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
