@@ -46,6 +46,14 @@ footer {
   margin: 20px 0;
 }
 
+.panel-body {
+    font-size: 18px;
+}
+
+.panel-body p {
+    margin: 0 0 15px;
+}
+
 
 /******************/
 /*     Navbar     */
