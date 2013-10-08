@@ -3,11 +3,12 @@ from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
-from flask.views import MethodView
 
 from flask_login import login_required
 
 from blog.auth import UserAwareMethodView
+from blog.admin.forms import NewPostForm
+from blog.admin.forms import NewProjectForm
 from blog.posts.models import Post
 from blog.projects.models import Project
 
@@ -45,12 +46,32 @@ class EditPostView(UserAwareMethodView):
         return redirect(url_for('posts.detail', slug=post.slug))
 
 
+class EditProjectView(UserAwareMethodView):
+    decorators = [login_required]
+    active_nav = 'admin_edit_project'
+
+    def get(self, slug):
+        context = self.get_context()
+        context['project'] = Project.objects.get_or_404(slug=slug)
+        return render_template("admin/edit-project.html", **context)
+
+    def post(self, slug):
+        project = Project.objects.get_or_404(slug=slug)
+        title = request.form['title']
+        body = request.form['body']
+        project.title = title
+        project.body = body
+        project.save()
+        return redirect(url_for('posts.detail', slug=project.slug))
+
+
 class AddPostView(UserAwareMethodView):
     decorators = [login_required]
     active_nav = 'admin_add_post'
 
     def get(self):
         context = self.get_context()
+        context['form'] = NewPostForm()
         return render_template("admin/add-post.html", **context)
 
     def post(self):
@@ -70,17 +91,19 @@ class AddProjectView(UserAwareMethodView):
 
     def get(self):
         context = self.get_context()
+        context['form'] = NewProjectForm()
         return render_template("admin/add-project.html", **context)
 
     def post(self):
         project = Project(
-            title=request.form.get('project-title', None),
-            body=request.form.get('project-body', None),
-            slug=request.form.get('project-slug', None),
+            title=request.form.get('title', None),
+            subtitle=request.form.get('subtitle', None),
+            body=request.form.get('body', None),
+            slug=request.form.get('slug', None),
             category="project",
         )
-        post.save()
-        return redirect(url_for('project.detail', slug=project.slug))
+        project.save()
+        return redirect(url_for('projects.detail', slug=project.slug))
 
 
 # Register the urls
@@ -88,4 +111,4 @@ admin.add_url_rule('/admin/', view_func=AdminIndexView.as_view('index'))
 admin.add_url_rule('/admin/blog/', view_func=AddPostView.as_view('add-post'))
 admin.add_url_rule('/admin/blog/<slug>/', view_func=EditPostView.as_view('edit-post'))
 admin.add_url_rule('/admin/project/', view_func=AddProjectView.as_view('add-project'))
-admin.add_url_rule('/admin/project/<slug>', view_func=EditPostView.as_view('edit-project'))
+admin.add_url_rule('/admin/project/<slug>', view_func=EditProjectView.as_view('edit-project'))

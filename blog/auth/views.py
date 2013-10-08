@@ -18,11 +18,11 @@ from blog.auth.forms import SetupForm
 from blog.auth.models import User
 
 
-
 auth = Blueprint('auth', __name__, template_folder='templates')
 
 
 class LoginView(UserAwareMethodView):
+    active_nav = 'login'
 
     def get(self):
         form = LoginForm()
@@ -42,8 +42,10 @@ class LoginView(UserAwareMethodView):
                 flask_login.login_user(user)
                 return redirect(url_for("admin.index"))
 
-        flash("Invalid Username or Password")
-        return redirect(url_for("auth.login"))
+            flash("Invalid Username or Password")
+
+        context = self.get_context(form=form)
+        return render_template('auth/login.html', **context)
 
 
 class LogoutView(UserAwareMethodView):
@@ -68,7 +70,6 @@ class SetupView(UserAwareMethodView):
 
             username = form.username.data
             password = User.hash_password(form.password.data)
-
 
             user = User(username=username, password=password)
             user.save()

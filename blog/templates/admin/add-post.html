@@ -4,14 +4,8 @@
 
         <div class="panel panel-default">
             <div class="panel-body">
-                <form role="form" method="POST">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="post-title" name="post-title" placeholder="Title">
-                    </div>
-                    <input type="text" class="form-control" id="post-slug" name="post-slug" placeholder="Slug">
-                    <hr>
-                    <textarea class="form-control" rows="30" id="post-body" name="post-body" placeholder="Add project body..."></textarea>
-                    <br>
+                <form class="form-horizontal" role="form" method="POST">
+                    {{ render_form(form) }}
                     <input type="submit" class="btn btn-primary pull-right" value="Save">
                 </form>
             </div>
