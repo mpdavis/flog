@@ -1,0 +1,16 @@
+{% extends "base/two-column.html" %}
+
+{% block left_column %}
+    {% for project in projects %}
+
+        <div class="panel panel-default">
+            <div class="panel-body panel-post">
+                <h1>{{ project.title }}</h1>
+                <hr>
+                <p>{{ project.body|truncate(400)|safe }}</p>
+                <a class="btn btn-primary pull-right" href="{{ url_for('projects.detail', slug=post.slug) }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+
+    {% endfor %}
+{% endblock %}

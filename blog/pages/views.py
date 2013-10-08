@@ -12,6 +12,7 @@ class ProjectsView(UserAwareMethodView):
 
     def get(self):
         context = self.get_context()
+        context['projects'] = Post.objects(category="project")
         return render_template('pages/projects.html', **context)
 
 
@@ -24,5 +25,5 @@ class ResumeView(UserAwareMethodView):
 
 
 # Register the urls
-pages.add_url_rule('/projects/', view_func=ProjectsView.as_view('projects'))
+# pages.add_url_rule('/projects/', view_func=ProjectsView.as_view('projects'))
 pages.add_url_rule('/resume/', view_func=ResumeView.as_view('resume'))

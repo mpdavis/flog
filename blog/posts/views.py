@@ -12,7 +12,7 @@ class ListView(UserAwareMethodView):
 
     def get(self):
         context = self.get_context()
-        context['posts'] = Post.objects.all()
+        context['posts'] = Post.objects(category="blog")
         return render_template('posts/list.html', **context)
 
 

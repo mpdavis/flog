@@ -1,12 +1,15 @@
 import json
 
 from flask import Blueprint
+from flask import flash
 from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
 import flask_login
 from flask_login import login_required
+
+from mongoengine.queryset import DoesNotExist
 
 from blog.auth import UserAwareMethodView
 from blog.auth import setup_incomplete
@@ -29,11 +32,17 @@ class LoginView(UserAwareMethodView):
         form = LoginForm(request.form)
 
         if form.validate():
-            user = User.objects.get(username=form.username.data)
+
+            try:
+                user = User.objects.get(username=form.username.data)
+            except DoesNotExist, e:
+                user = None
+
             if user and user.check_password(form.password.data):
                 flask_login.login_user(user)
                 return redirect(url_for("admin.index"))
 
+        flash("Invalid Username or Password")
         return redirect(url_for("auth.login"))
 
 
