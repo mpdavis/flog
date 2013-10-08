@@ -1,0 +1,13 @@
+{% extends "base/two-column.html" %}
+
+{% block left_column %}
+
+        <div class="panel panel-default">
+            <div class="panel-body panel-post">
+                <h1>{{ project.title }}</h1>
+                <hr>
+                <p>{{ project.body|safe }}</p>
+            </div>
+        </div>
+
+{% endblock %}

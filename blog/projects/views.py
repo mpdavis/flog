@@ -21,8 +21,8 @@ class DetailView(UserAwareMethodView):
 
     def get(self, slug):
         context = self.get_context()
-        context['post'] = Project.objects.get_or_404(slug=slug)
-        return render_template('posts/detail.html', **context)
+        context['project'] = Project.objects.get_or_404(slug=slug)
+        return render_template('projects/detail.html', **context)
 
 
 # Register the urls
