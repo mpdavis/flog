@@ -9,10 +9,13 @@ Flask-Blog is an easy to deploy hackable blog built with Flask and MongoDB.  Usi
 
 ### Getting Started
 
+Note: These instructions are still being developed.
+
 1. Clone the flask-blog repo
 
     git clone https://github.com/mpdavis/blog.git
 
 2. Edit the `blog/settings.py` with appropriate information
+3. Push the code to Heroku to deploy
 
 
