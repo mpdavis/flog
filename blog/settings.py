@@ -16,6 +16,8 @@ MONGODB_PASSWORD = os.environ.get('MONGODB_PASSWORD', None)
 ADMIN_EMAIL = 'mike.philip.davis@gmail.com'
 ADMIN_NAME = 'Michael Davis'
 
+DISQUS_SHORTNAME = 'michaeldavis'
+
 
 try:
     from settingslocal import *

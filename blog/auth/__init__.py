@@ -10,6 +10,8 @@ import flask_login
 
 from blog.auth.models import User
 
+from blog import settings
+
 
 def user_unauthorized_callback():
     return redirect(url_for('auth.login'))
@@ -34,8 +36,9 @@ class UserAwareMethodView(MethodView):
 
     def get_context(self, extra_ctx=None, **kwargs):
         ctx = {
-            'user': self.user,
-            'active_nav': self.active_nav,
+            'user':                 self.user,
+            'active_nav':           self.active_nav,
+            'disqus_shortname':     settings.DISQUS_SHORTNAME,
         }
         if extra_ctx:
             ctx.update(extra_ctx)
