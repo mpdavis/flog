@@ -1,14 +1,42 @@
-{% extends "base/two-column.html" %}
+{% extends "admin/base/base.html" %}
 
-{% block left_column %}
+{% block content %}
 
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <form class="form-horizontal" role="form" method="POST">
-                    {{ render_form(form) }}
-                    <input type="submit" class="btn btn-primary pull-right" value="Save">
-                </form>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form" method="POST">
+                            {{ render_form(form) }}
+                            <input type="submit" class="btn btn-primary pull-right" value="Save">
+                        </form>
+                    </div>
+                </div>
             </div>
+
+             <div class="col-lg-6">
+                 <div class="panel panel-default">
+                    <div class="panel-body panel-post">
+                        <div id="preview-title" style="min-height: 52px; font-size: 36px; font-weight: 500;"></div>
+                        <hr>
+                        <div id="preview-body"></div>
+                    </div>
+                </div>
+             </div>
         </div>
 
+{% endblock %}
+
+{% block js %}
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#body").keyup( function(){
+                    $("#preview-body").html(marked($("#body").val()));
+                });
+
+                $("#title").keyup( function() {
+                    $("#preview-title").html(marked($("#title").val()));
+                })
+            });
+        </script>
 {% endblock %}

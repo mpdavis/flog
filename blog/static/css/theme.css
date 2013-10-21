@@ -39,11 +39,16 @@ footer {
 }
 
 .content-container {
-    padding-top: 100px;
+    padding-top: 75px;
 }
 
 .container .credit {
   margin: 20px 0;
+}
+
+.full-width {
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .panel-post {
@@ -112,10 +117,6 @@ footer {
     border-top: thin solid #e5e5e5;
     height: 60px;
     background-color: #f5f5f5;
-}
-
-.content-container {
-    padding-top: 100px;
 }
 
 .container .credit {

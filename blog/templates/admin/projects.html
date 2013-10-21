@@ -1,0 +1,18 @@
+{% extends "admin/base/base.html" %}
+
+{% block content %}
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="list-group">
+                    {% for project in projects %}
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">{{ project.title }}</h4>
+                        <p class="list-group-item-text">...</p>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

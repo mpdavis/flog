@@ -25,9 +25,9 @@ def render_text_field(field):
     """ % (field.id, field.label.text)
 
     input = """<div class="col-lg-10">
-                   <input type="text" class="form-control" id="%s" name="%s" value="">
+                   <input type="text" class="form-control" id="%s" name="%s" value="%s">
                </div>
-            """ % (field.id, field.id)
+            """ % (field.id, field.id, field.data if field.data else "")
 
     values = {
         'error_class':  error_class,
@@ -87,9 +87,9 @@ def render_textarea_field(field):
     """ % (field.id, field.label.text)
 
     input = """<div class="col-lg-10">
-                   <textarea rows=30 class="form-control" id="%s" name="%s" value=""></textarea>
+                   <textarea rows=20 class="form-control" id="%s" name="%s">%s</textarea>
                </div>
-            """ % (field.id, field.id)
+            """ % (field.id, field.id, field.data if field.data else "")
 
     values = {
         'error_class':  error_class,

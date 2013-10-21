@@ -18,20 +18,14 @@
     <body>
         <div id="wrap">
             {% if not remove_navbar %}
-                {% include "base/navbar.html" %}
+                {% include "admin/base/navbar.html" %}
             {% endif %}
 
 
-            <div class="content-container {% if full_width %}full-width{% else %}container{% endif %}">
+            <div class="content-container full-width">
 
                 {% block content %}{% endblock %}
 
-            </div>
-        </div>
-
-        <div class="footer">
-            <div class="container">
-                <p class="text-muted credit">Copyright 2013 <a href="http://michael-p-davis.com">Michael Davis</a>.</p>
             </div>
         </div>
 
