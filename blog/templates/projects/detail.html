@@ -1,13 +1,36 @@
-{% extends "base/two-column.html" %}
+{% extends "base/one-column.html" %}
 
-{% block left_column %}
+{% block column %}
 
-        <div class="panel panel-default">
-            <div class="panel-body panel-post">
-                <h1>{{ project.title }}</h1>
-                <hr>
-                <p>{{ project.html_body|safe }}</p>
-            </div>
+        <div id="wrapper">
+
+        <div class="container">
+
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="post-title">{{ project.title }}</h1>
+
+                </header>
+
+                <div class="post-content">
+                     {{ project.html_body|safe }}
+                </div>
+
+                <footer class="post-footer">
+                    <section class="author">
+                        <!--<img src="/static/img/mike-square.jpg" class="userimage" alt="Seth Lilly" />-->
+                        <!--<p class="attr">AUTHOR</p>-->
+                        <!--<h4><a href="http://hipsterghost.com/">Michael Davis</a></h4>-->
+                        <!--<p class="bio">You probably haven&#x27;t heard of me.</p>-->
+                    </section>
+                </footer>
+            </article>
+
+
+
         </div>
+        </div>
+        </div>
+    </div>
 
 {% endblock %}

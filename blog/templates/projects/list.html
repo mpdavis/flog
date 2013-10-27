@@ -1,16 +1,27 @@
-{% extends "base/two-column.html" %}
+{% extends "base/one-column.html" %}
 
-{% block left_column %}
-    {% for project in projects %}
+{% block column %}
 
-        <div class="panel panel-default">
-            <div class="panel-body panel-post">
-                <h1>{{ project.title }}</h1>
-                <hr>
-                <p>{{ project.subtitle }}</p>
-                <a class="btn btn-primary pull-right" href="{{ url_for('projects.detail', slug=project.slug) }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
+        <div id="post-index" class="container">
+        <ol class="post-list">
+            {% for project in projects %}
+                <li class="post-stub">
+                    <a href="{{ url_for('projects.detail', slug=project.slug) }}">
+                        <h4 class="post-stub-title">{{ project.title }}</h4> <br>
+                        <div class="post-stub-title">{{ project.subtitle }}</div>
+
+                    </a>
+                </li>
+            {% endfor %}
+        </ol>
+
+            <div class="post-navigation">
+            <nav class="pagination" role="pagination">
+                {% if older_posts %}
+                <a class="older-posts" href="/ghostwriter/page/2.htm">Older Posts &rarr;</a>
+                {% endif %}
+            </nav>
         </div>
+    </div>
 
-    {% endfor %}
 {% endblock %}

@@ -1,135 +1,439 @@
 
+/* ============================================================ */
+/* Base */
+/* ============================================================ */
 
-/*body {*/
-    /*margin-top: 100px;  *//* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
-    /*background-color: #efefef;*/
-/*}*/
-
-html,
 body {
-  height: 100%;
-  /* The html and body elements cannot have any padding or margin. */
-}
-
-footer {
-    margin: 20px 0;
-}
-
-.panel-title {
-    font-size: 30px;
-}
-
-.panel-heading {
-    height: 54px;
-}
-
-#wrap {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -60px;
-    padding: 0 0 60px;
-}
-
-/* Set the fixed height of the footer here */
-#footer {
-    border-top: thin solid #e5e5e5;
-  height: 60px;
-  background-color: #f5f5f5;
-}
-
-.content-container {
-    padding-top: 75px;
-}
-
-.container .credit {
-  margin: 20px 0;
-}
-
-.full-width {
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-.panel-post {
+    background: #FEFEFE;
+    color: #424242;
+    font-family: "Open Sans", arial, sans-serif;
     font-size: 18px;
+    margin: 0px;
 }
 
-.panel-body p {
-    margin: 0 0 15px;
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 33px;
+    text-transform: none;
 }
 
+h1 { font-size: 26px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; margin-bottom: 20px; }
+h4 { font-size: 18px; margin-bottom: 18px; }
+h5 { font-size: 16px; margin-bottom: 15px; }
+h6 { font-size: 14px; margin-bottom: 12px; }
 
-/******************/
-/*     Navbar     */
-/******************/
-
-.navbar {
-    background-color: #34495e;
-    border-bottom-color: #7f8c8d;
+p {
+    line-height: 1.8;
+    margin: 0 0 30px;
 }
 
-.navbar .navbar-nav>li>a:hover {
-    background-color: #2c3e50;
-    color: #eeeeee;
+a {
+    color: #F03838;
+    text-decoration: none;
 }
 
-.navbar .navbar-nav>li>a {
-    color: #eeeeee;
+ul, ol {
+    list-style-position: inside;
+    line-height: 1.8;
+    margin: 0 0 40px;
+    padding: 0;
 }
 
-.navbar-inverse .navbar-brand {
-    color: #eeeeee;
+ul li, ol li { margin: 0 0 10px; }
+
+blockquote {
+    border-left: 1px dotted #303030;
+    margin: 40px 0;
+    padding: 5px 30px;
 }
 
-.active {
-    background-color: #2c3e50;
+blockquote p {
+    color: #AEADAD;
+    display: block;
+    font-style: italic;
+    margin: 0;
+    width: 100%;
 }
 
+img {
+    display: block;
+    margin: 40px 0;
+    max-width: 809px;
+}
 
-/******************/
-/*     Contact    */
-/******************/
+pre {
+    background: #F1F0EA;
+    border: 1px solid #DDDBCC;
+    border-radius: 3px;
+    margin: 0 0 40px;
+    padding: 15px 20px;
+}
 
-.media-body {
-    margin-top: 8px;
+::selection {
+    background: #FFF5B8;
+    color: #000;
+    display: block;
+}
+
+::-moz-selection {
+    background: #FFF5B8;
+    color: #000;
+    display: block;
+}
+
+/* ============================================================ */
+/* General Appearance */
+/* ============================================================ */
+
+.container {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    max-width: 889px;
+}
+
+.button {
+    background: #303030;
+    border: none;
+    border-radius: 3px;
+    color: #FEFEFE;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 12px;
+    text-transform: uppercase;
+}
+
+.button:hover { background: #F03838; }
+
+.button-square {
+    background: #F03838;
+    float: left;
+    margin: 0 0 0 10px;
+    padding: 8px;
+}
+
+.button-square:hover { background: #303030; }
+
+/* ============================================================ */
+/* Site Header */
+/* ============================================================ */
+
+.site-header {
+    margin: 100px 0 35px;
+    overflow: auto;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.site-title-wrapper {
+    display: table;
+    margin: 0 auto;
+}
+
+.site-title {
+    float: left;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    text-transform: uppercase;
     margin-left: 10px;
 }
 
-.media-body a {
+.site-title a {
+    float: left;
+    background: #F03838;
+    color: #FEFEFE;
+    padding: 5px 10px 6px;
+}
+
+.site-title a:hover { background: #303030; }
+
+/* ============================================================ */
+/* Post */
+/* ============================================================ */
+
+#latest-post { display: none; }
+
+.post { margin: 0 40px; }
+
+.post-header {
+    border-bottom: 6px solid #303030;
+    margin: 0 0 50px;
+    padding: 0 0 80px;
     text-align: center;
+    text-transform: uppercase;
 }
 
-
-/******************/
-/*     Footer     */
-/******************/
-
-#wrap {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -60px;
-    padding: 0 0 60px;
+.post-title {
+    font-size: 52px;
+    font-weight: 700;
+    margin: 15px 0;
+    text-transform: uppercase;
 }
+
+.post-date {
+    color: #AEADAD;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    margin: 25px 0 0;
+}
+
+.post-date:after {
+    border-bottom: 1px dotted #303030;
+    content: "";
+    display: block;
+    margin: 40px auto 0;
+    width: 100px;
+}
+
+.post-content {
+    margin: 0 0 55px;
+    border-bottom: 6px solid #303030;
+}
+
+.post-content a:hover {
+    border-bottom: 1px dotted #F03838;
+    padding: 0 0 2px;
+}
+
+.post-navigation {
+    display: table;
+    margin: 70px auto 100px;
+}
+
+.newer-posts,
+.older-posts {
+    float: left;
+    background: #F03838;
+    color: #FEFEFE;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 5px;
+    padding: 5px 10px 6px;
+    text-transform: uppercase;
+}
+
+.newer-posts:hover,
+.older-posts:hover {
+    background: #303030;
+}
+
+.page-number { display: none; }
+
+/* ============================================================ */
+/* Post Index */
+/* ============================================================ */
+
+.post-list {
+    border-top: 6px solid #303030;
+    list-style: none;
+    margin: 80px 40px 0;
+    padding: 35px 0 0;
+}
+
+.post-stub {
+    border-bottom: 1px dotted #303030;
+    margin: 0;
+}
+
+.post-stub:first-child { padding-top: 0; }
+
+.post-stub a {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    display: block;
+    color: #424242;
+    padding: 20px 5px;
+}
+
+.post-stub a:hover {
+    background: #FCF5F5;
+    color: #F03838;
+    padding: 20px 12px;
+}
+
+.post-stub-title {
+    display: inline-block;
+    margin: 0;
+    text-transform: none;
+}
+
+.post-stub-date { display: inline-block; }
+
+.next-posts-link a,
+.previous-posts-link a {
+    display: block;
+    padding: 8px 11px;
+}
+
+/* ============================================================ */
+/* Icons */
+/* ============================================================ */
+
+.icon {
+    background: url(../images/sprite-28-76-2x.png) no-repeat;
+    background-size: 14px 38px;
+    display: block;
+    height: 38px;
+    width: 14px;
+}
+
+.icon-menu {
+    background-position: 0 0;
+    height: 14px;
+    width: 14px;
+}
+
+.icon-up {
+    background-position: 0 -15px;
+    height: 8px;
+    width: 14px;
+}
+
+.icon-rss {
+    background-position: 0 -24px;
+    height: 14px;
+    width: 14px;
+}
+
+/* ============================================================ */
+/* Footer */
+/* ============================================================ */
 
 .footer {
-    border-top: thin solid #e5e5e5;
-    height: 60px;
-    background-color: #f5f5f5;
+    background: #303030;
+    color: #D3D3D3;
+    padding: 80px 0 95px;
 }
 
-.container .credit {
-  margin: 20px 0;
+.footer .site-title-wrapper { margin-bottom: 35px; }
+
+.footer .site-title a:hover,
+.footer .button-square:hover {
+    background: #121212;
 }
 
-/******************/
-/*     Social     */
-/******************/
+.button-jump-top {
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
+
+.footer-copyright {
+    color: #656565;
+    font-size: 14px;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.footer-copyright a {
+    color: #656565;
+    font-weight: 700;
+}
+
+.footer-copyright a:hover { color: #FEFEFE; }
+
+/* ============================================================ */
+/* NProgress */
+/* ============================================================ */
+
+#nprogress .bar { background: #F03838; }
+
+#nprogress .peg { box-shadow: 0 0 10px #F03838, 0 0 5px #F03838; }
+
+#nprogress .spinner-icon {
+    border-top-color: #F03838;
+    border-left-color: #F03838;
+}
+
+/* ============================================================ */
+/* Media Queries */
+/* ============================================================ */
+
+@media only screen and (max-width: 600px) {
+    .post-stub-title { display: block; }
+
+    .post-stub-date:before {
+        content: "";
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .post-title { font-size: 32px; }
+}
+
+
+/* ============================================================ */
+/* Author Section */
+/* ============================================================ */
+
+section.author, section.share {
+    width: 100%;
+    text-align: left;
+    text-transform: none;
+    margin-bottom: 55px
+}
+
+section.share {
+    margin-top: 1em;
+    border-top: 1px solid #ecf0f1;
+    padding-top: 1em;
+    text-align: right;
+}
+
+section.author h4, section.author p, section.share p {
+    padding: 0;
+    margin: 0;
+}
+
+section.author h4 {
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+section.author p.attr, section.share p.info {
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+
+section.author p.attr {
+    margin-bottom: 2px
+}
+
+section.share p.info {
+    display: inline-block
+}
+
+section.author p.bio {
+    font-size: 16px;
+    margin-left: 82px;
+    line-height: 1.4em;
+}
+
+img.userimage {
+width: 70px;
+max-width: 70px;
+max-height: 70px;
+border-radius: 50%;
+margin: 0 10px 0 0;
+float: left;
+}
+
+/* ============================================================ */
+/* Social icons */
+/* ============================================================ */
 
 .social-icon {
     height: 64px;
     width: 64px;
+    display: block;
+    float: left;
+    margin-left: 10px;
 }
 
 .social-google {
@@ -156,4 +460,3 @@ footer {
     background-color: #FF6600;
     background-image: url('/static/icons/hackernews/hackernews-64.png');
 }
-

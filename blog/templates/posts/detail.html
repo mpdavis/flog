@@ -1,19 +1,33 @@
-{% extends "base/two-column.html" %}
+{% extends "base/one-column.html" %}
 
-{% block left_column %}
+{% block column %}
 
-        <div class="panel panel-default">
-            <div class="panel-body panel-post">
-                <h1>{{ post.title }}</h1>
-                <hr>
-                <p>{{ post.html_body|safe }}</p>
-            </div>
-            <div class="panel-footer">
-                <span class="glyphicon glyphicon-time"></span> Posted on {{ post.created_at.strftime('%b %d, %Y') }} by Michael Davis
-            </div>
-        </div>
 
-        <div id="disqus_thread"></div>
+    <div id="wrapper">
+
+        <div class="container">
+
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="post-title">{{ post.title }}</h1>
+
+                    <p class="post-date"><time datetime="Thu Sep 19 2013 11:54:25 GMT+0000 (UTC)">Published {{ post.created_at.strftime('%B %d, %Y') }}</time></p>
+                </header>
+
+                <div class="post-content">
+                     {{ post.html_body|safe }}
+                </div>
+
+                <footer class="post-footer">
+                    <section class="author">
+                        <img src="/static/img/mike-square.jpg" class="userimage" alt="Seth Lilly" />
+                        <p class="attr">AUTHOR</p>
+                        <h4><a href="http://hipsterghost.com/">Michael Davis</a></h4>
+                        <p class="bio">I am 27 years old and I am a software engineer and web developer, security enthusiast, Software Engineering senior at Iowa State University, and a year-round intern at WebFilings.</p>
+                    </section>
+                </footer>
+
+                <div id="disqus_thread"></div>
             <script type="text/javascript">
                 /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
                 var disqus_shortname = "{{ disqus_shortname }}";
@@ -27,6 +41,16 @@
             </script>
             <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </article>
+
+
+
+
+
+        </div>
+        </div>
+        </div>
+    </div>
 
 
 {% endblock %}

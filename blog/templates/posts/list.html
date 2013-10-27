@@ -1,19 +1,27 @@
-{% extends "base/two-column.html" %}
+{% extends "base/one-column.html" %}
 
-{% block left_column %}
-    {% for post in posts %}
+{% block column %}
 
-        <div class="panel panel-default">
-            <div class="panel-body panel-post">
-                <h1>{{ post.title }}</h1>
-                <hr>
-                <p>{{ post.html_body|truncate(400)|safe }}</p>
-                <a class="btn btn-primary pull-right" href="{{ url_for('posts.detail', slug=post.slug) }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-            <div class="panel-footer">
-                <span class="glyphicon glyphicon-time"></span> Posted on {{ post.created_at.strftime('%b %d, %Y') }} by Michael Davis
-            </div>
+    <div id="post-index" class="container">
+        <ol class="post-list">
+            {% for post in posts %}
+                <li class="post-stub">
+                    <a class="js-ajax-link" href="{{ url_for('posts.detail', slug=post.slug) }}">
+                        <h4 class="post-stub-title">{{ post.title }}</h4>
+
+                        <time style="float: right;" class="post-stub-date" datetime="Thu Sep 19 2013 11:58:31 GMT+0000 (UTC)">{{ post.created_at.strftime('%B %d, %Y') }}</time>
+                    </a>
+                </li>
+            {% endfor %}
+        </ol>
+
+        <div class="post-navigation">
+            <nav class="pagination" role="pagination">
+                {% if older_posts %}
+                <a class="older-posts" href="/ghostwriter/page/2.htm">Older Posts &rarr;</a>
+                {% endif %}
+            </nav>
         </div>
+    </div>
 
-    {% endfor %}
 {% endblock %}
