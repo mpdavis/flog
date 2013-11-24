@@ -34,3 +34,12 @@ class User(db.Document):
         'indexes': ['username'],
     }
 
+
+class Settings(db.Document):
+    disqus_shortname = db.StringField()
+    posts_enabled = db.BooleanField()
+
+    @classmethod
+    def create(cls):
+        settings = Settings.objects.all()
+

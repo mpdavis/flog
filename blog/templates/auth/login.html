@@ -18,9 +18,10 @@
                         {% endif %}
                     {% endwith %}
 
-                    <form class="form-horizontal" role="form" method="post">
-                        {{ render_form(form) }}
-                        <button type="submit" class="btn btn-primary pull-right">Login</button>
+                    <form method="post">
+                        <input type="text" name="username">
+                        <input type="password" name="password">
+                        <button type="submit">Login</button>
                     </form>
                 </div>
             </div>

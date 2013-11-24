@@ -48,19 +48,18 @@ def check_app_state():
                 settings.SETUP_COMPLETE = True
 
     if not settings.SETUP_COMPLETE:
+        print "redirect?"
         redirect("auth.setup")
 
 templatetags.setup_jinja2_environment(app)
 
 from admin.views import admin
 from auth.views import auth
-from pages.views import pages
 from posts.views import posts
 from projects.views import projects
 
 app.register_blueprint(admin)
 app.register_blueprint(auth)
-app.register_blueprint(pages)
 app.register_blueprint(posts)
 app.register_blueprint(projects)
 

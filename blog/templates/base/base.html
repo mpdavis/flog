@@ -8,48 +8,20 @@
 
         <title>Michael Davis</title>
 
-        <!--<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">-->
-        <!--<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">-->
         <link href="/static/css/styles.css" rel="stylesheet">
-
-
     </head>
 
     <body class="home-template">
+        {% include "base/navbar.html" %}
 
-    <header class="site-header">
-        <div class="container">
-            <div class="site-title-wrapper">
-                <h1 class="site-title"><a class="js-ajax-link" href="/">Home</a></h1>
-                <h1 class="site-title"><a class="js-ajax-link" href="{{ url_for('projects.list') }}">Projects</a></h1>
-                <h1 class="site-title"><a class="js-ajax-link" href="/static/pdf/MichaelDavis.pdf">Resume</a></h1>
+        {% block content %}{% endblock %}
 
-                <!--<a class="button-square" href="#"><span class="icon icon-rss"></span></a>-->
+        <footer class="footer">
+            <div class="container">
+                {% include "widgets/contact.html" %}
+                {% include "widgets/footer.html" %}
             </div>
-        </div>
-    </header>
-
-
-    <div class="content-container {% if full_width %}full-width{% else %}container{% endif %}">
-
-    {% block content %}{% endblock %}
-
-    </div>
-
-
-    <footer class="footer">
-        <div class="container">
-            <div class="site-title-wrapper">
-                <a href="mailto:mike.philip.davis@gmail.com"><div class="social-icon social-google"></div></a>
-                <a href="https://www.github.com/mpdavis"><div class="social-icon social-github"></div></a>
-                <a href="https://twitter.com/davis_m"><div class="social-icon social-twitter"></div></a>
-                <a href="http://www.linkedin.com/in/mpdavis1/"><div class="social-icon social-linkedin"></div></a>
-                <a href="https://news.ycombinator.com/user?id=davis_m"><div class="social-icon social-hackernews"></div></a>
-            </div>
-            <p class="footer-copyright">© 2013 / Powered by <a href="http://github.com/mpdavis/blog/">Flask-Blog</a> / Built by <a href="http://www.michael-p-davis.com">Michael Davis</a></p>
-        </div>
-    </footer>
-
+        </footer>
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script>
