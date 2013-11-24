@@ -167,7 +167,6 @@ admin.add_url_rule('/admin/posts/new/', view_func=AdminAddPost.as_view('add-post
 admin.add_url_rule('/admin/posts/<slug>/', view_func=AdminViewPost.as_view('view-post'))
 admin.add_url_rule('/admin/posts/<slug>/edit', view_func=AdminEditPost.as_view('edit-post'))
 
-
 admin.add_url_rule('/admin/projects/', view_func=AdminProjects.as_view('projects'))
 admin.add_url_rule('/admin/project/', view_func=AddProjectView.as_view('add-project'))
 admin.add_url_rule('/admin/project/<slug>', view_func=EditProjectView.as_view('edit-project'))

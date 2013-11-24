@@ -45,7 +45,6 @@ def check_app_state():
                 settings.SETUP_COMPLETE = True
 
     if not settings.SETUP_COMPLETE:
-        print "redirect?"
         redirect("auth.setup")
 
 templatetags.setup_jinja2_environment(app)
