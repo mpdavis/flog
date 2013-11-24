@@ -8,15 +8,9 @@ echo "Installing python requirements with pip"
 sudo pip install -r /vagrant/requirements.txt
 
 echo "Setting up nginx configuration"
-sudo cp /vagrant/provision/files/vinz_nginx /etc/nginx/sites-enabled/default
+sudo cp /vagrant/provision/files/nginx /etc/nginx/sites-enabled/default
 
 echo "Restarting nginx"
 sudo service nginx restart
-
-echo "Setting up supervisor configuration"
-sudo cp /vagrant/provision/files/vinz_supervisor.conf /etc/supervisor/conf.d/vinz.conf
-
-echo "Restarting supervisor"
-sudo supervisorctl reload
 
 echo "Done provisioning!"
