@@ -11,9 +11,6 @@ from flask.ext.mongoengine import MongoEngine
 
 from flask_login import LoginManager
 
-
-
-
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = settings.SECRET_KEY
