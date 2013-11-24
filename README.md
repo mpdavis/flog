@@ -1,6 +1,6 @@
-# Flask-Blog
+# flog
 
-Flask-Blog is an easy to deploy hackable blog built with Flask and MongoDB.  Using Heorku, you can get a blog set up in minutes.
+Flog is an easy to deploy hackable blog built with Flask and MongoDB.  Using Heorku, you can get a blog set up in minutes.
 
 ### Pre-requisites
 
@@ -11,9 +11,9 @@ Flask-Blog is an easy to deploy hackable blog built with Flask and MongoDB.  Usi
 
 Note: These instructions are still being developed.
 
-1. Clone the flask-blog repo
+1. Clone the flog repo
 
-    git clone https://github.com/mpdavis/blog.git
+    git clone https://github.com/mpdavis/flog.git
 
 2. Edit the `blog/settings.py` with appropriate information
 3. Push the code to Heroku to deploy
