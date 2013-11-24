@@ -16,10 +16,10 @@ DISQUS_SHORTNAME = 'michaeldavis'
 uri = os.environ.get('MONGOLAB_URI', None)
 if uri:
     uri_parts = uri.split('/')
-    username = uri_parts[3]
+    MONGODB_DB = MONGODB_USERNAME = uri_parts[3]
     sub_parts = uri_parts[2].split(':')
-    port = sub_parts[2]
-    password, host = sub_parts[1].split('@')
+    MONGODB_PORT = sub_parts[2]
+    MONGODB_PASSWORD, MONGODB_HOST = sub_parts[1].split('@')
 else:
     MONGODB_HOST = None
     MONGODB_PORT = None
