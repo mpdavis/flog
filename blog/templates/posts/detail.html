@@ -18,14 +18,18 @@
                      {{ post.html_body|safe }}
                 </div>
 
+                
+
+                {% if author_name %}
                 <footer class="post-footer">
                     <section class="author">
-                        <img src="/static/img/mike-square.jpg" class="userimage" alt="Michael Davis" />
+                        <img src="/static/img/mike-square.jpg" class="userimage" alt="Author Image" />
                         <p class="attr">AUTHOR</p>
-                        <h4><a href="http://micahel-p-davis.com/">Michael Davis</a></h4>
-                        <p class="bio">I am 27 years old and I am a software engineer and web developer, security enthusiast, Software Engineering senior at Iowa State University, and a year-round intern at WebFilings.</p>
+                        <h4><a href="http://micahel-p-davis.com/">{{ author_name }}</a></h4>
+                        <p class="bio">{% if author_bio %}{{ author_bio }}{% endif %}</p>
                     </section>
                 </footer>
+                {% endif %}
 
                 {% if disqus_shortname %}
                 <div id="disqus_thread"></div>

@@ -5,24 +5,16 @@ from flask import url_for
 from blog import db
 
 
-class Post(db.Document):
-    created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
-    title = db.StringField(max_length=255, required=True)
-    slug = db.StringField(max_length=255, required=True)
-    markdown_body = db.StringField(required=True)
-    html_body = db.StringField(required=True)
-    category = db.StringField(max_length=255)
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    created_at = db.Column(db.DateTime, default=db.func.now())
+    title = db.Column(db.String(240))
+    slug = db.Column(db.String(240))
+    markdown_body = db.Column(db.String(10000))
+    html_body = db.Column(db.String(10000))
 
     def get_edit_url(self):
         return url_for('admin.edit-post', slug=self.slug)
 
     def get_admin_url(self):
         return url_for('admin.view-post', slug=self.slug)
-
-    def __unicode__(self):
-        return self.title
-
-    meta = {
-        'indexes': ['-created_at', 'slug'],
-        'ordering': ['-created_at']
-    }

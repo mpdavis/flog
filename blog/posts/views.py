@@ -31,7 +31,7 @@ class DetailView(UserAwareMethodView):
 
     def get(self, slug):
         context = self.get_context()
-        context['post'] = Post.objects.get_or_404(slug=slug)
+        context['post'] = Post.query.filter_by(slug=slug).first()
         return render_template('posts/detail.html', **context)
 
 

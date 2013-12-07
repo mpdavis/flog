@@ -11,6 +11,10 @@ from flask_login import login_required
 
 from mongoengine.queryset import DoesNotExist
 
+from blog.admin.models import GlobalSettings
+
+from blog import db
+
 from blog.auth import UserAwareMethodView
 from blog.auth import setup_incomplete
 from blog.auth.forms import LoginForm
@@ -68,11 +72,31 @@ class SetupView(UserAwareMethodView):
 
         if form.validate():
 
+            global_settings = GlobalSettings.get_global_settings_object()
+
+            import logging
+            logging.warn(global_settings)
+
+            if form.disqus_shortname.data:
+                global_settings.disqus_shortname = form.disqus_shortname.data
+
+            if form.flog_name.data:
+                global_settings.flog_name = form.flog_name.data
+
+            if form.author_name.data:
+                global_settings.author_name = form.author_name.data
+
+            if form.author_bio.data:
+                global_settings.author_bio = form.author_bio.data
+
+            db.session.commit()
+
             username = form.username.data
             password = User.hash_password(form.password.data)
 
             user = User(username=username, password=password)
-            user.save()
+            db.session.add(user)
+            db.session.commit()
             flask_login.login_user(user)
 
             return redirect(url_for('admin.add-post'))

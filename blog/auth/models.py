@@ -4,9 +4,14 @@ from passlib.hash import pbkdf2_sha512
 from blog import db
 
 
-class User(db.Document):
-    username = db.StringField(required=True)
-    password = db.StringField(required=True)
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(100))
+    password = db.Column(db.String(200))
+
+    def __init__(self, username, password):
+        self.username = username
+        self.password = pbkdf2_sha512.encrypt(password)
 
     @classmethod
     def hash_password(cls, password):
@@ -29,17 +34,3 @@ class User(db.Document):
 
     def __unicode__(self):
         return self.username
-
-    meta = {
-        'indexes': ['username'],
-    }
-
-
-class Settings(db.Document):
-    disqus_shortname = db.StringField()
-    posts_enabled = db.BooleanField()
-
-    @classmethod
-    def create(cls):
-        settings = Settings.objects.all()
-

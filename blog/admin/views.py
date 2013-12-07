@@ -8,6 +8,8 @@ from flask_login import login_required
 
 from markdown import markdown
 
+from blog import db
+
 from blog.auth import UserAwareMethodView
 from blog.admin.forms import NewPostForm
 from blog.admin.forms import NewProjectForm
@@ -124,9 +126,9 @@ class AdminAddPost(UserAwareMethodView):
             markdown_body=request.form.get('body', None),
             html_body=markdown(request.form.get('body', None)),
             slug=request.form.get('slug', None),
-            category="blog",
         )
-        post.save()
+        db.session.add(post)
+        db.session.commit()
         return redirect(url_for('posts.detail', slug=post.slug))
 
 
@@ -145,7 +147,6 @@ class AddProjectView(UserAwareMethodView):
             subtitle=request.form.get('subtitle', None),
             body=request.form.get('body', None),
             slug=request.form.get('slug', None),
-            category="project",
         )
         project.save()
         return redirect(url_for('projects.detail', slug=project.slug))
