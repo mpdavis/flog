@@ -115,6 +115,15 @@ pre {
 
 .button-square:hover { background: #303030; }
 
+.stretch {
+    min-height:100%;
+    position:relative;
+}
+
+footer {
+
+}
+
 /* ============================================================ */
 /* Site Header */
 /* ============================================================ */
@@ -307,6 +316,10 @@ pre {
     background: #303030;
     color: #D3D3D3;
     padding: 80px 0 95px;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px;
 }
 
 .footer .site-title-wrapper { margin-bottom: 35px; }

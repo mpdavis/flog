@@ -12,17 +12,18 @@
     </head>
 
     <body class="home-template">
-        {% include "base/navbar.html" %}
+        <div class="strech">
+            {% include "base/navbar.html" %}
 
-        {% block content %}{% endblock %}
+            {% block content %}{% endblock %}
 
-        <footer class="footer">
-            <div class="container">
-                {% include "widgets/contact.html" %}
-                {% include "widgets/footer.html" %}
-            </div>
-        </footer>
-
+            <footer class="footer">
+                <div class="container">
+                    {% include "widgets/contact.html" %}
+                    {% include "widgets/footer.html" %}
+                </div>
+            </footer>
+        </div>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/marked/0.2.9/marked.min.js"></script>
